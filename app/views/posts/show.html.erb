@@ -1,0 +1,25 @@
+<div class="row">
+     <!-- Post Content Column -->
+   <div class="col-lg-8">
+     <!-- Title -->
+     <h1 class="mt-4"><%= @post.title %></h1>
+     <!-- Author -->
+     <p class="lead">by <%= @post.user.name %></p>
+     <hr>
+     <!-- Date/Time -->
+     <p>Posted on:  <%= @post.created_at %></p>
+     <hr>
+     <img class="img-fluid rounded" src="<%= @post.image %>" alt="Post Image">
+     <hr>
+     <!-- Post Content -->
+     <p class="lead"><%= @post.content %></p>
+     <!-- Comments Form -->
+     <%= render 'comments/form', comment: @comment %>
+     <!-- Comments List -->
+     <br>
+     <h2>Comments:</h2>
+     <% @post.comments.each do |comment| %>
+      <%= render 'comments/show', comment: comment unless comment.new_record?%>
+     <% end %>
+   </div>
+</div>

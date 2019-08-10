@@ -1,0 +1,27 @@
+
+<% @posts.each_slice(4) do |arr| %>
+<div class="row">
+<% arr.each do |post|%>
+  <div class="col-md-3 col-sm-6 col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= post.title %>
+      </div>
+      <div class="panel-body">
+        <div class="embed-responsive embed-responsive-4by3">
+          <%= link_to post_path(post) do %>
+            <%=image_tag post.image%>
+            <% end %>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="button">
+          Comentarios <span class="badge"><%= post.comments.count %></span>
+        </button></span>
+        Author: <%= post.user.name %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
